@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  mqtt-plugin:
+    build: .
+    ports:
+      - "8085:8085"  # REST API
+      - "1883:1883"  # MQTT
+      - "8083:8083"  # MQTT WebSocket
+    environment:
+      - SPRING_APPLICATION_NAME=mqtt-plugin
+      - MQTT_HOST=0.0.0.0
+      - MQTT_PORT=1883
+      - MQTT_WEBSOCKET_PORT=8083
+      - MQTT_ALLOW_ANONYMOUS=true
+      - PLUGIN_NAME=MQTT Service
+      - PLUGIN_VERSION=1.0.0
+      - PLUGIN_TYPE=mqtt
+      - PLUGIN_DESCRIPTION=MQTT Broker based on Moquette
+      - PLUGIN_HOST=mqtt-plugin
+      - PLUGIN_PORT=8085
+      - DATAAPI_GRPC_HOST=dataapi
+      - DATAAPI_GRPC_PORT=9090
+    restart: unless-stopped
