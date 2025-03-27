@@ -122,8 +122,10 @@ public class MqttService {
         return running;
     }
 
+    // 添加 getUptime 方法（如果不存在）
     public long getUptime() {
-        if (!running) {
+        // 如果服务未运行，返回0
+        if (!isRunning()) {
             return 0;
         }
         return System.currentTimeMillis() - startTime;
@@ -146,5 +148,40 @@ public class MqttService {
         );
 
         logger.debug("Published message to topic {}: {}", topic, message);
+    }
+    
+    // 修改publish方法，使用mqttBroker而不是不存在的mqttClient
+    public boolean publish(String topic, String message) {
+        try {
+            logger.info("发布消息到主题: {}", topic);
+            
+            // 检查MQTT服务器是否运行
+            if (!running) {
+                logger.warn("MQTT服务器未运行，尝试启动");
+                try {
+                    start();
+                } catch (Exception e) {
+                    logger.error("启动MQTT服务器失败: {}", e.getMessage());
+                    return false;
+                }
+            }
+            
+            // 使用内部发布方法
+            mqttBroker.internalPublish(
+                    MqttMessageBuilders.publish()
+                            .topicName(topic)
+                            .retained(false)
+                            .qos(MqttQoS.valueOf(1))  // QoS 1
+                            .payload(Unpooled.copiedBuffer(message.getBytes(StandardCharsets.UTF_8)))
+                            .build(),
+                    "INTERNAL"
+            );
+            
+            logger.info("消息已成功发布到主题: {}", topic);
+            return true;
+        } catch (Exception e) {
+            logger.error("发布消息时发生错误: {}", e.getMessage());
+            return false;
+        }
     }
 }

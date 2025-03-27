@@ -45,6 +45,14 @@ public class MqttConfig {
     @Value("${dataapi.grpc.port}")
     private int dataApiPort;
 
+    // 添加插件gRPC端口属性
+    @Value("${plugin.grpc.port:8085}")
+    private int pluginGrpcPort;
+    
+    public int getPluginGrpcPort() {
+        return pluginGrpcPort;
+    }
+
     public String getHost() {
         return host;
     }
