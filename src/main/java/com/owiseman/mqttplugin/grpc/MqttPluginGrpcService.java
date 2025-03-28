@@ -24,7 +24,7 @@ public class MqttPluginGrpcService extends PluginServiceGrpc.PluginServiceImplBa
         logger.info("收到命令: {}", command);
         
         try {
-            if ("publish".equals(command)) {
+            if ("publish".equals(command) || "message".equals(command)) {  // 添加对"message"命令的支持
                 String topic = request.getParametersMap().getOrDefault("topic", "");
                 String message = request.getParametersMap().getOrDefault("message", "");
                 
