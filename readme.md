@@ -24,3 +24,7 @@
 
 ```bash
 mvn spring-boot:run
+
+### 新增一些特性
+1. 提供更多的设备管理方式
+2. red-node的接入
