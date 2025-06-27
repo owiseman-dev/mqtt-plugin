@@ -1,0 +1,52 @@
+{
+  "name": "iot-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@node-red/editor-api": "^4.0.9",
+    "@node-red/editor-client": "^4.0.9",
+    "@node-red/runtime": "^4.0.9",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tabs": "^1.1.12",
+    "@types/d3": "^7.4.3",
+    "@types/mqtt": "^0.0.34",
+    "@types/socket.io-client": "^1.4.36",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "d3": "^7.9.0",
+    "dgram": "^1.0.1",
+    "dns": "^0.2.2",
+    "jquery": "^3.7.1",
+    "jquery-ui": "^1.14.1",
+    "lucide-react": "^0.523.0",
+    "marked": "^15.0.12",
+    "mqtt": "^5.13.1",
+    "next": "15.3.4",
+    "qiankun": "^2.10.16",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^3.0.0",
+    "socket.io-client": "^4.8.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/jquery": "^3.5.32",
+    "@types/marked": "^5.0.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
